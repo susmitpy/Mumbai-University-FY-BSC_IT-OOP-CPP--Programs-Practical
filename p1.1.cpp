@@ -29,6 +29,6 @@ class Employee{
 int main()
 {
   Employee emp("Susmit");  //passing "susmit" to the  constructor
-  cout << emp.displayInfo() << endl;  //calling public method
+  cout << "Employee Info: " << emp.displayInfo() << endl;  //calling public method
   return 0;
 }

@@ -26,6 +26,6 @@ private:
 int main()
 {
   Student s("Susmit");
-  cout << s.displayData() << endl;
+  cout << "Student Info: " << s.displayData() << endl;
   return 0;
 }
