@@ -1,31 +1,34 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-class Employee:
-
-  Employee(char[] name, int id)
-  {
-    Employee.name = name;
-    Employee.id = id;
-  }
+class Employee{
   public:
-    displayInfo()
+    Employee(string n)
     {
-      return Employee.getInfo();
+      name = n;
     }
 
+    string displayInfo()
+    {
+      return getInfo();
+    }
   private:
-    getInfo()
+    string name;
+
+    string getInfo()
     {
-      return (Employee.name, Employee.id);
+      return name;
     }
 
 
+
+};
 
 int main()
 {
-  Employee emp("Susmit", 1001);
-  cout << emp.displayInfo << endl;
+  Employee emp("Susmit");
+  cout << emp.displayInfo() << endl;
   return 0;
 }
