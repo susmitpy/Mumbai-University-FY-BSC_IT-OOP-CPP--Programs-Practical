@@ -5,19 +5,19 @@ using namespace std;
 
 class Employee{
   public:
-    Employee(string n)
+    Employee(string n)  //Constructor
     {
       name = n;
     }
 
     string displayInfo()
     {
-      return getInfo();
+      return getInfo();  //calling private method
     }
   private:
-    string name;
+    string name; // class member
 
-    string getInfo()
+    string getInfo()  //can be called only from within the class
     {
       return name;
     }
@@ -28,7 +28,7 @@ class Employee{
 
 int main()
 {
-  Employee emp("Susmit");
-  cout << emp.displayInfo() << endl;
+  Employee emp("Susmit");  //passing "susmit" to the  constructor
+  cout << emp.displayInfo() << endl;  //calling public method
   return 0;
 }
