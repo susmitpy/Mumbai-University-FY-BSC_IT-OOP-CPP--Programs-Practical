@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
-#include <typeinfo>
+
 
 using namespace std;
 void insertionSort(int *, int);
 void selectionSort(int *, int);
-void mergeSort(int *, int);
+void bubbleSort(int *, int);
+// void mergeSort(int *, int);
+// void merge(int *, int*, int *);
 void printer(int *, int, string);
 
 int main(int argc, char* argv[])
@@ -27,14 +29,17 @@ int main(int argc, char* argv[])
     case 's':
       selectionSort(p, n);
       break;
+    case 'b':
+      bubbleSort(p,n);
+      break;
   }
 
-  cout << "C++ Done" << endl;
-  // for (int i = 0; i < n; i++)
-  // {
-  //   cout << p[i] << " ";
-  // }
-  // cout << "\n";
+//  cout << "C++ Done" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << p[i] << " ";
+  }
+  cout << "\n";
   return 0;
 }
 
@@ -89,6 +94,47 @@ void insertionSort(int *p, int n)
     }
   }
 }
+
+void bubbleSort(int *p, int n)
+{
+  bool bubbled;
+  for (int i = 0; i < n - 1; i++)
+  {
+    bubbled = false;
+    for (int j = 0; j < n - 1; j++)
+    {
+      if (p[j] > p[j+1])
+      {
+        bubbled = true;
+        p[j] = p[j] + p[j+1];
+        p[j+1] = p[j] - p[j+1];
+        p[j] = p[j] - p[j+1];
+      }
+    }
+    if (!bubbled)
+    {
+      break;
+    }
+  }
+}
+
+// void mergeSort(int *a, int n)
+// {
+//
+// }
+//
+// void merge(int *l, int *r, int *a)
+// {
+//   int i, j, k, ln, rn;
+//
+// }
+//
+// int * divide(int *arr)
+// {
+//
+// }
+
+
 
 void printer(int *p, int n, string mssg)
 {
