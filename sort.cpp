@@ -5,6 +5,7 @@
 using namespace std;
 void insertionSort(int *, int);
 void selectionSort(int *, int);
+void mergeSort(int *, int);
 void printer(int *, int, string);
 
 int main(int argc, char* argv[])
@@ -28,18 +29,18 @@ int main(int argc, char* argv[])
       break;
   }
 
-
-  for (int i = 0; i < n; i++)
-  {
-    cout << p[i] << " ";
-  }
-  cout << "\n";
+  cout << "C++ Done" << endl;
+  // for (int i = 0; i < n; i++)
+  // {
+  //   cout << p[i] << " ";
+  // }
+  // cout << "\n";
   return 0;
 }
 
 void selectionSort(int *p, int n)
 {
-    cout << "Selection Sort\n";
+    // cout << "Selection Sort\n";
     int min, temp, index;
     for (int i = 0; i < n; i++)
     {
@@ -64,26 +65,26 @@ void selectionSort(int *p, int n)
 
 void insertionSort(int *p, int n)
 {
-  cout << "Insertion Sort\n";
+  // cout << "Insertion Sort\n";
   int temp, value, curr_index;
-  printer(p, n, "Start");
+  // printer(p, n, "Start");
   for (int i = 1; i < n;  i++)
   {
-    printer(p, n, "First Loop");
+    // printer(p, n, "First Loop");
     value = p[i];
     curr_index = i;
     for (int j = i - 1; j >= 0; j--)
     {
-      printer(p, n, "Second Loop");
+      // printer(p, n, "Second Loop");
 
       if (p[j] > p[curr_index])
       {
-        printer(p, n, "Swapping");
+        // printer(p, n, "Swapping");
         temp = p[j];
         p[j] = p[curr_index];
         p[curr_index] = temp;
         curr_index = j;
-        printer(p, n, "Swapped");
+        // printer(p, n, "Swapped");
       }
     }
   }
