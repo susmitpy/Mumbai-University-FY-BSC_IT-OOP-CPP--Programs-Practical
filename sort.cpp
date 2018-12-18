@@ -6,9 +6,14 @@ using namespace std;
 void insertionSort(int *, int);
 void selectionSort(int *, int);
 void bubbleSort(int *, int);
+void quickSort(int *, int);
+void quickSorter(int *p, int left, int right);
+int partition(int *p, int left, int right, int pivot);
 // void mergeSort(int *, int);
 // void merge(int *, int*, int *);
-void printer(int *, int, string);
+
+void swap(int *array, int a, int b);
+
 
 int main(int argc, char* argv[])
 {
@@ -31,6 +36,9 @@ int main(int argc, char* argv[])
       break;
     case 'b':
       bubbleSort(p,n);
+      break;
+    case 'q':
+      quickSort(p,n);
       break;
   }
 
@@ -61,9 +69,8 @@ void selectionSort(int *p, int n)
       }
       if (index != i)
       {
-        temp = p[i];
-        p[i] = p[index];
-        p[index] = temp;
+        swap(p, i, index);
+
       }
     }
 }
@@ -72,24 +79,23 @@ void insertionSort(int *p, int n)
 {
   // cout << "Insertion Sort\n";
   int temp, value, curr_index;
-  // printer(p, n, "Start");
+
   for (int i = 1; i < n;  i++)
   {
-    // printer(p, n, "First Loop");
+
     value = p[i];
     curr_index = i;
     for (int j = i - 1; j >= 0; j--)
     {
-      // printer(p, n, "Second Loop");
+
 
       if (p[j] > p[curr_index])
       {
-        // printer(p, n, "Swapping");
-        temp = p[j];
-        p[j] = p[curr_index];
-        p[curr_index] = temp;
+
+        swap(p, j, curr_index);
+
         curr_index = j;
-        // printer(p, n, "Swapped");
+
       }
     }
   }
@@ -106,9 +112,8 @@ void bubbleSort(int *p, int n)
       if (p[j] > p[j+1])
       {
         bubbled = true;
-        p[j] = p[j] + p[j+1];
-        p[j+1] = p[j] - p[j+1];
-        p[j] = p[j] - p[j+1];
+        swap(p, j, j+1);
+
       }
     }
     if (!bubbled)
@@ -116,6 +121,52 @@ void bubbleSort(int *p, int n)
       break;
     }
   }
+}
+
+void quickSort(int *p, int n)
+{
+  // cout << "Starting quick sort" << endl;
+  quickSorter(p, 0, n-1);
+}
+
+void quickSorter(int *p, int left, int right)
+{
+   if (left < right)
+   {
+
+     int pivot = p[((left+right) / 2)];
+
+     int index = partition(p, left, right, pivot);
+
+     quickSorter(p, left, index-1);
+     quickSorter(p, index, right);
+   }
+}
+
+int partition(int *p, int left, int right, int pivot)
+{
+  while (left <= right)
+  {
+    while (p[left] < pivot)
+    {
+
+      left++;
+    }
+
+    while (p[right] > pivot)
+    {
+
+      right--;
+    }
+
+    swap(p, left, right);
+    left++;
+    right--;
+
+
+  }
+  return left;
+
 }
 
 // void mergeSort(int *a, int n)
@@ -134,14 +185,9 @@ void bubbleSort(int *p, int n)
 //
 // }
 
-
-
-void printer(int *p, int n, string mssg)
+void swap(int *array, int a, int b)
 {
-  cout << mssg << ": ";
-  for (int i = 0; i < n; i++)
-  {
-    cout << p[i] << " ";
-  }
-  cout << "\n";
+  int temp = array[a];
+  array[a] = array[b];
+  array[b] = temp;
 }
