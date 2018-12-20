@@ -44,8 +44,15 @@ private:
   {
     return str;
   }
-  void setStr(char s[])
+  void setStr(char *p)
   {
+    char s[25];
+    int i = 0;
+    while (p[i] != '\0')
+    {
+      s[i] = p[i];
+      i++;
+    }
     strcpy(str, s);
   }
 
