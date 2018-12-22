@@ -44,7 +44,7 @@ public:
   Clock operator + (Clock c)
   {
     cout << "Operator Overloaded" << endl;
-    return Clock(1,2,3);
+    return add(c);
   }
 };
 
@@ -57,8 +57,8 @@ int main()
   cin >> h2 >> m2 >> s2;
   Clock c1(h1,m1,s1);
   Clock c2(h2,m2,s2);
-//  Clock c3 = +c1(c2);
-  Clock c3 = c1.add(c2);
+  Clock c3 = c1 + c2;
+
   cout << "Addition: " << c3.h << ":" << c3.m << ":" <<c3.s << endl;
   return 0;
 }
